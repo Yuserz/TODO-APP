@@ -7,6 +7,7 @@
   "scripts": {
     "start": "nodemon src/index.js",
     "semistandard": "semistandard --fix",
+    "tap": "c8 --lines 80 --functions 80 --branches 80 --statements --report-dir=.nyc_output --reporter-1cov --reporter-text --per-file tap test/**/*. test.js --no-coverage",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
