@@ -1,55 +1,18 @@
 import Fastify from 'fastify';
-import { getDB, saveDB } from './utils/db/index.js';
-import { v4 } from 'uuid';
+import { general } from './services/generals/index.js';
+import { createTodo } from './services/todos/create-todo.js';
+
+const prefix = '/api';
 
 export async function build () {
   // Require the framework and instantiate it
   const fastify = Fastify({ logger: true });
 
-  const prefix = '/api';
-
   // Declare a route
-  fastify.get(prefix, async (request, reply) => {
-    return { success: true };
-  });
+  fastify.get(prefix, general);
 
   // create todo
-  fastify.post(`${prefix}/todo`, async (request, reply) => {
-    const { body } = request;
-    const { title, description, isDone = false } = body;
-    const db = await getDB();
-
-    const id = v4();
-
-    const todo = {
-      title,
-      description,
-      isDone,
-      createdDate: new Date().getTime(),
-      updatedDate: new Date().getTime()
-    };
-
-    db.todos[id] = todo;
-
-    await saveDB(db);
-
-    /*
-     const newobj = {
-       id
-     }
-
-     for (const key in todo) {
-        newobj[key] todo[key]
-     }
-
-     return newObj
-    */
-
-    return {
-      id,
-      ...todo
-    };
-  });
+  fastify.post(`${prefix}/todo`, createTodo);
 
   return fastify;
 }
