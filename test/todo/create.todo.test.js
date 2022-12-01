@@ -42,9 +42,9 @@ describe('creating todo should work', async () => {
     result.isDone.must.be.false();
     // expect createdDate and updateDate is not null
     result.createdDate.must.not.be.null();
-    result.createdDate.must.not.be.null();
+    result.updatedDate.must.not.be.null();
   });
-  it('Should return {success: true}', async () => {
+  it('Should return the object that was created with ID with isDone = to the given object', async () => {
     const newTodo = {
       title: 'New Todo 2',
       description: 'Some description 2',
@@ -70,10 +70,9 @@ describe('creating todo should work', async () => {
     // expect that all of the values should be equal to newTodo properties
     result.title.must.be.equal(newTodo.title);
     result.description.must.be.equal(newTodo.description);
-    // expect taht isDone is false because it was not given
     result.isDone.must.be.equal(newTodo.isDone);
     // expect createdDate and updateDate is not null
     result.createdDate.must.not.be.null();
-    result.createdDate.must.not.be.null();
+    result.updatedDate.must.not.be.null();
   });
 });
