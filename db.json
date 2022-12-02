@@ -55,28 +55,7 @@
       "isDone": false,
       "createdDate": 1669879672563,
       "updatedDate": 1669879672563
-    },
-    "f8a889b8-9339-4684-8d4b-fac32e2fd36a": {
-      "title": "New Todo 2",
-      "description": "Some description 2",
-      "isDone": true,
-      "createdDate": 1669879672573,
-      "updatedDate": 1669879672573
-    },
-    "59de70ff-7039-4085-b2f4-dd30d1a5dcc0": {
-      "title": "New Todo",
-      "description": "Some description",
-      "isDone": false,
-      "createdDate": 1669882313642,
-      "updatedDate": 1669882313642
-    },
-    "ab87c428-37f2-4035-bcd9-6e544711d29d": {
-      "title": "New Todo 2",
-      "description": "Some description 2",
-      "isDone": true,
-      "createdDate": 1669882313652,
-      "updatedDate": 1669882313652
     }
   },
-  "test": 1669882312535
+  "test": 1669952663003
 }
