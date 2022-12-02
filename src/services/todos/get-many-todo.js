@@ -17,11 +17,17 @@ export const getManyTodo = async (request, reply) => {
     };
   });
 
-  console.log(todos2);
+  for(const{ title, createdDate } of todos2) {
+    console.log('unsorted', title, new Date(createdDate))
+  }
 
   todos2.sort(function (todo1, todo2) {
     return todo2.createdDate - todo1.createdDate;
   });
+
+  for(const{ title, createdDate } of todos2) {
+    console.log('sorted', title, new Date(createdDate))
+  }
 
   for (const todo of todos2) {
     list.push(todo);
