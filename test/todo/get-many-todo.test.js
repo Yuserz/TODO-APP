@@ -13,8 +13,7 @@ describe('get many todo should work', async () => {
     app = await build();
   });
 
-  it('Should return a list of objects', async () => {
-    
+  it('Should return a list of objects with default limit', async () => {
     const response = await app.inject({
       method: 'GET',
       url: `${prefix}/todo`
@@ -26,23 +25,13 @@ describe('get many todo should work', async () => {
     const result = await response.json();
 
     // expect that id exists
-    // const result
-    
+    result.length.must.not.be.above(5);
   });
-  it('Should return the object that was created with ID with isDone = to the given object', async () => {
-    const newTodo = {
-      title: 'New Todo 2',
-      description: 'Some description 2',
-      isDone: true
-    };
 
+  it('Should return a list of objects with default limit', async () => {
     const response = await app.inject({
-      method: 'POST',
-      url: `${prefix}/todo`,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newTodo)
+      method: 'GET',
+      url: `${prefix}/todo?limit=2`
     });
 
     // this checks if HTTP status equals to 200
@@ -51,13 +40,6 @@ describe('get many todo should work', async () => {
     const result = await response.json();
 
     // expect that id exists
-    result.id.must.not.be.null();
-    // expect that all of the values should be equal to newTodo properties
-    result.title.must.be.equal(newTodo.title);
-    result.description.must.be.equal(newTodo.description);
-    result.isDone.must.be.equal(newTodo.isDone);
-    // expect createdDate and updateDate is not null
-    result.createdDate.must.not.be.null();
-    result.updatedDate.must.not.be.null();
+    result.length.must.not.be.above(2);
   });
 });

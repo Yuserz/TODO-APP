@@ -17,7 +17,7 @@ export const getManyTodo = async (request, reply) => {
     })
     .sort(function (todo1, todo2) {
       return todo2.createdDate - todo1.createdDate;
-    })
+    });
 
   for (const todo of todos) {
     list.push(todo);
